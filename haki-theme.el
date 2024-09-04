@@ -236,6 +236,7 @@ Tip: Use 'VictorMono' or 'Maple Mono'."
       (haki-sans-font      haki-sans-font)
       (haki-title-font     haki-title-font))
 
+  (setq haki-modal-box-line-width 10)
 ;;; --- change mode-line border for meow/evil states
   (defun haki-modal-mode-line ()
     "Changes mode-line border accordingly to meow/evil states
@@ -249,7 +250,7 @@ Respected Only in GUI frame"
        ((meow-keypad-mode-p) (set-face-attribute 'mode-line nil :box heading-3))))
     (when (require 'evil nil t)
       (cond
-       ((evil-visual-state-p) (set-face-attribute 'mode-line nil :box heading-5))
+       ((evil-visual-state-p) (set-face-attribute 'mode-line nil :box (:line-width haki-modal-box-line-width :color heading-5 :style line)))
        ((evil-insert-state-p) (set-face-attribute 'mode-line nil :box heading-4))
        ((evil-normal-state-p) (set-face-attribute 'mode-line nil :box cursor))
        ((evil-motion-state-p) (set-face-attribute 'mode-line nil :box heading-2))
